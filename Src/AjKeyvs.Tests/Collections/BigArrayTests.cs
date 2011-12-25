@@ -55,6 +55,18 @@ namespace AjKeyvs.Tests.Collections
         }
 
         [TestMethod]
+        public void GetDefaultOnUndefinedValuesOneNodeLevel()
+        {
+            BigArray<int> array = new BigArray<int>(10);
+
+            for (int k = 0; k < 5; k++)
+                array[(ulong)k] = k;
+
+            for (int k = 100; k < 120; k++)
+                Assert.AreEqual(0, array[(ulong)k]);
+        }
+
+        [TestMethod]
         public void GetDefaultOnUndefinedValuesTwoNodeLevels()
         {
             BigArray<int> array = new BigArray<int>(10);
@@ -93,6 +105,20 @@ namespace AjKeyvs.Tests.Collections
 
             for (int k = 0; k < 16; k++)
                 Assert.AreEqual(k, array[(ulong) k]);
+        }
+
+        [TestMethod]
+        public void MiddleElementsAreDefault()
+        {
+            BigArray<int> array = new BigArray<int>(16);
+
+            for (int k = 0; k < 16; k++)
+                array[(ulong)(ulong.MaxValue - (uint)k)] = k;
+            for (int k = 0; k < 16; k++)
+                array[(ulong)k] = k;
+
+            for (ulong k = long.MaxValue - 16; k < long.MaxValue; k++)
+                Assert.AreEqual(0, array[k]);
         }
     }
 }

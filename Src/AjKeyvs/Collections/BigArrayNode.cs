@@ -74,6 +74,10 @@
             if (this.from <= index && index <= this.to)
             {
                 ushort position = this.GetSlotNumber(index);
+
+                if (this.subnodes[position] == null)
+                    return default(T);
+
                 return this.subnodes[position].GetValue(index);
             }
 
