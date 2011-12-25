@@ -18,12 +18,6 @@
             this.values = new T[size];
         }
 
-        public ulong From { get { return this.from; } }
-
-        public ushort Size { get { return this.size; } }
-
-        public ushort Level { get { return 0; } }
-
         public IBigArrayNode<T> SetValue(ulong index, T value)
         {
             if (this.from <= index && index <= this.from + (ulong) (this.size - 1))
@@ -39,7 +33,10 @@
 
         public T GetValue(ulong index)
         {
-            return this.values[index - this.from];
+            if (this.from <= index && index <= this.from + (ulong)(this.size - 1))          
+                return this.values[index - this.from];
+
+            return default(T);
         }
     }
 }

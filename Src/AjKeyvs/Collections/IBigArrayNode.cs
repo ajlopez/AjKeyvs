@@ -10,11 +10,5 @@
         IBigArrayNode<T> SetValue(ulong index, T value);
 
         T GetValue(ulong index);
-
-        ulong From { get; }
-
-        ushort Size { get; }
-
-        ushort Level { get; }
     }
 }

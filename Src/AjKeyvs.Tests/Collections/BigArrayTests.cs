@@ -46,6 +46,27 @@ namespace AjKeyvs.Tests.Collections
         }
 
         [TestMethod]
+        public void GetDefaultOnEmptyArray()
+        {
+            BigArray<int> array = new BigArray<int>(10);
+
+            for (int k = 0; k < 20; k++)
+                Assert.AreEqual(0, array[(ulong)k]);
+        }
+
+        [TestMethod]
+        public void GetDefaultOnUndefinedValuesTwoNodeLevels()
+        {
+            BigArray<int> array = new BigArray<int>(10);
+
+            for (int k = 0; k < 20; k++)
+                array[(ulong) k] = k;
+
+            for (int k = 100; k < 120; k++)
+                Assert.AreEqual(0, array[(ulong)k]);
+        }
+
+        [TestMethod]
         public void AddLastSixteenElementsNodeSizeSixteen()
         {
             BigArray<int> array = new BigArray<int>(16);
@@ -55,6 +76,23 @@ namespace AjKeyvs.Tests.Collections
 
             for (int k = 0; k < 16; k++)
                 Assert.AreEqual(k, array[(ulong)(ulong.MaxValue - (uint) k)]);
+        }
+
+        [TestMethod]
+        public void AddLastAndFirstSixteenElementsNodeSizeSixteen()
+        {
+            BigArray<int> array = new BigArray<int>(16);
+
+            for (int k = 0; k < 16; k++)
+                array[(ulong)(ulong.MaxValue - (uint)k)] = k;
+            for (int k = 0; k < 16; k++)
+                array[(ulong)k] = k;
+
+            for (int k = 0; k < 16; k++)
+                Assert.AreEqual(k, array[(ulong)(ulong.MaxValue - (uint)k)]);
+
+            for (int k = 0; k < 16; k++)
+                Assert.AreEqual(k, array[(ulong) k]);
         }
     }
 }

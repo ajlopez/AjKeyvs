@@ -11,20 +11,30 @@
         private ulong to;
         private ushort level;
         private ushort size;
-        private ulong modulo;
+        private ulong divisor;
         private IBigArrayNode<T>[] subnodes;
 
         public BigArrayNode(ulong index, ushort size, ushort level, IBigArrayNode<T> subnode)
         {
             this.size = size;
             this.level = level;
-            this.modulo = size;
+            this.divisor = 1;
 
             for (ushort k = 0; k < this.level; k++)
-                this.modulo *= this.size;
+                this.divisor *= this.size;
 
-            this.from = index - (index % this.modulo);
-            this.to = this.from + (this.modulo - 1);
+            ulong modulo = this.divisor * this.size;
+
+            if (modulo == 0)
+            {
+                this.from = 0;
+                this.to = ulong.MaxValue;
+            }
+            else
+            {
+                this.from = index - (index % modulo);
+                this.to = this.from + (modulo - 1);
+            }
 
             if (level == 1)
                 this.subnodes = new BigArrayLeafNode<T>[size];
@@ -32,14 +42,8 @@
                 this.subnodes = new BigArrayNode<T>[size];
             
             if (subnodes != null)
-                this.subnodes[this.GetSlotNumber(subnode.From)] = subnode;
+                this.subnodes[this.GetSlotNumber(index)] = subnode;
         }
-
-        public ulong From { get { return this.from; } }
-
-        public ushort Size { get { return this.size; } }
-
-        public ushort Level { get { return this.level; } }
 
         public IBigArrayNode<T> SetValue(ulong index, T value)
         {
@@ -67,13 +71,18 @@
 
         public T GetValue(ulong index)
         {
-            ushort position = this.GetSlotNumber(index);
-            return this.subnodes[position].GetValue(index);
+            if (this.from <= index && index <= this.to)
+            {
+                ushort position = this.GetSlotNumber(index);
+                return this.subnodes[position].GetValue(index);
+            }
+
+            return default(T);
         }
 
         private ushort GetSlotNumber(ulong index)
         {
-            return (ushort)((index - this.from) / (this.modulo / this.size));
+            return (ushort)((index - this.from) / this.divisor);
         }
     }
 }
