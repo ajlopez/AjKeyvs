@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Collections\BigArray.cs" />
     <Compile Include="Collections\BigArrayLeafNode.cs" />
+    <Compile Include="Collections\BigArrayNode.cs" />
+    <Compile Include="Collections\IBigArrayNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

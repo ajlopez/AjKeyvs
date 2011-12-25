@@ -8,7 +8,7 @@
     public class BigArray<T>
     {
         private ushort nodesize;
-        private BigArrayLeafNode<T> root;
+        private IBigArrayNode<T> root;
 
         public BigArray()
             : this(256)
@@ -24,18 +24,18 @@
         {
             get
             {
-                if (root == null)
+                if (this.root == null)
                     return default(T);
 
-                return root.GetValue(index);
+                return this.root.GetValue(index);
             }
 
             set
             {
-                if (root == null)
-                    root = new BigArrayLeafNode<T>(index, this.nodesize);
+                if (this.root == null)
+                    this.root = new BigArrayLeafNode<T>(index, this.nodesize);
 
-                root.SetValue(index, value);
+                this.root = this.root.SetValue(index, value);
             }
         }
     }

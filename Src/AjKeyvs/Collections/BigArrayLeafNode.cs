@@ -5,25 +5,39 @@
     using System.Linq;
     using System.Text;
 
-    class BigArrayLeafNode<T>
+    public class BigArrayLeafNode<T> : IBigArrayNode<T>
     {
         private ulong from;
         private ushort size;
         private T[] values;
 
-        internal BigArrayLeafNode(ulong index, ushort size)
+        public BigArrayLeafNode(ulong index, ushort size)
         {
             this.from = index - (index % size);
             this.size = size;
             this.values = new T[size];
         }
 
-        internal void SetValue(ulong index, T value)
+        public ulong From { get { return this.from; } }
+
+        public ushort Size { get { return this.size; } }
+
+        public ushort Level { get { return 0; } }
+
+        public IBigArrayNode<T> SetValue(ulong index, T value)
         {
-            this.values[index] = value;
+            if (this.from <= index && index <= this.from + (ulong) (this.size - 1))
+            {
+                this.values[index - this.from] = value;
+                return this;
+            }
+
+            BigArrayNode<T> parent = new BigArrayNode<T>(this.from, this.size, 1, this);
+
+            return parent.SetValue(index, value);
         }
 
-        internal T GetValue(ulong index)
+        public T GetValue(ulong index)
         {
             return this.values[index - this.from];
         }
