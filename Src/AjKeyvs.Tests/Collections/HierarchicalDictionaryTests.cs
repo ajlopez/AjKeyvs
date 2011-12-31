@@ -36,5 +36,14 @@ namespace AjKeyvs.Tests.Collections
             this.dictionary["one"] = 1;
             Assert.AreEqual(1, this.dictionary["one"]);
         }
+
+        [TestMethod]
+        public void SetAndGetCompositeKeyValue()
+        {
+            this.dictionary["users:1:name"] = "Adam";
+            this.dictionary["users:1:age"] = 800;
+    
+            Assert.AreEqual(800, this.dictionary["users:1:age"]);
+        }
     }
 }
