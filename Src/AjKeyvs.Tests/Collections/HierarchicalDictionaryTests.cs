@@ -53,5 +53,21 @@ namespace AjKeyvs.Tests.Collections
 
             Assert.AreEqual("one", this.dictionary["1"]);
         }
+
+        [TestMethod]
+        public void SetAndGetOneThousandUsers()
+        {
+            for (int k = 1; k <= 1000; k++)
+            {
+                this.dictionary[string.Format("users:{0}:name", k)] = string.Format("user{0}", k);
+                this.dictionary[string.Format("users:{0}:id", k)] = k;
+            }
+
+            for (int k = 1; k <= 1000; k++)
+            {
+                Assert.AreEqual(string.Format("user{0}", k), this.dictionary[string.Format("users:{0}:name", k)]);;
+                Assert.AreEqual(k, this.dictionary[string.Format("users:{0}:id", k)]); ;
+            }
+        }
     }
 }
