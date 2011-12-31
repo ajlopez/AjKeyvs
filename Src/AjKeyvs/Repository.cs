@@ -4,17 +4,15 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using AjKeyvs.Collections;
 
     public class Repository
     {
-        IDictionary<string, object> values = new Dictionary<string, object>();
+        HierarchicalDictionary<object> values = new HierarchicalDictionary<object>();
 
         public object GetValue(string key)
         {
-            if (values.ContainsKey(key))
-                return values[key];
-
-            return null;
+            return values[key];
         }
 
         public void SetValue(string key, object value)
