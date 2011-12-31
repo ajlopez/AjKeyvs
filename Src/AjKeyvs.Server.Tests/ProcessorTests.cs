@@ -34,5 +34,32 @@ namespace AjKeyvs.Server.Tests
             Assert.AreEqual(800ul, repository.GetValue("users:1:age"));
             Assert.AreEqual(180ul, repository.GetValue("users:1:height"));
         }
+
+        [TestMethod]
+        public void ProcessSetAndGetKeyValue()
+        {
+            Processor processor = new Processor(this.repository, "set counter 1\nget counter");
+            Assert.IsNull(processor.Process());
+            Assert.AreEqual(1ul, processor.Process());
+        }
+
+
+        [TestMethod]
+        public void SetAndGetOneThousandUsers()
+        {
+            for (int k = 1; k <= 1000; k++)
+            {
+                Processor processor = new Processor(this.repository, string.Format("set users:{0}:age {0}\nset users:{0}:id {0}", k));
+                Assert.IsNull(processor.Process());
+                Assert.IsNull(processor.Process());
+            }
+
+            for (int k = 1; k <= 1000; k++)
+            {
+                Processor processor = new Processor(this.repository, string.Format("get users:{0}:age\nget users:{0}:id", k));
+                Assert.AreEqual((ulong) k, processor.Process());
+                Assert.AreEqual((ulong)k, processor.Process());
+            }
+        }
     }
 }

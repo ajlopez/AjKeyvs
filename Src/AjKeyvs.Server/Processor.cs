@@ -26,14 +26,25 @@ namespace AjKeyvs.Server
         public object Process()
         {
             string command = this.GetName();
-            string key = this.GetName();
-            ulong value = this.GetIntegerValue();
-            this.GetEndOfCommand();
-
             if (command == "set")
-                this.repository.SetValue(key, value);
+            {
+                string key = this.GetName();
+                ulong value = this.GetIntegerValue();
+                this.GetEndOfCommand();
 
-            return null;
+                this.repository.SetValue(key, value);
+                return null;
+            }
+
+            if (command == "get")
+            {
+                string key = this.GetName();
+                this.GetEndOfCommand();
+
+                return this.repository.GetValue(key);
+            }
+
+            throw new InvalidDataException();
         }
 
         private string GetName()
