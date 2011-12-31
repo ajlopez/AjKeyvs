@@ -23,7 +23,7 @@ namespace AjKeyvs.Server
             this.tokenizer = new Tokenizer(reader);
         }
 
-        public void Process()
+        public object Process()
         {
             string command = this.GetName();
             string key = this.GetName();
@@ -32,6 +32,8 @@ namespace AjKeyvs.Server
 
             if (command == "set")
                 this.repository.SetValue(key, value);
+
+            return null;
         }
 
         private string GetName()
