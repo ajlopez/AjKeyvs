@@ -13,6 +13,9 @@
         {
             get
             {
+                if (this.bytes == null)
+                    return false;
+
                 ulong position = index >> 8;
                 ushort offset = (ushort)(index & 0x07);
                 byte result = this.bytes[position];
