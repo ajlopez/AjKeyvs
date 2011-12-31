@@ -32,6 +32,9 @@
 
             char ch = (char)ich;
 
+            if (ch == '\n')
+                return new Token(TokenType.EndOfLine, "\n");
+
             if (char.IsDigit(ch))
                 return NextInteger(ch);
 
@@ -73,7 +76,7 @@
         {
             int ich = this.NextChar();
 
-            while (ich != -1 && char.IsWhiteSpace((char)ich))
+            while (ich != -1 && char.IsWhiteSpace((char)ich) && ((char)ich) != '\n')
                 ich = this.NextChar();
 
             if (ich != -1)

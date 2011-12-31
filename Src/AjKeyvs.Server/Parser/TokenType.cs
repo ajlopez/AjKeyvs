@@ -9,7 +9,8 @@ namespace AjKeyvs.Server.Parser
     {
         Name,
         String,
-        Integer
+        Integer,
+        EndOfLine
     }
 }
 

@@ -74,5 +74,33 @@ namespace AjKeyvs.Server.Tests.Parser
             Tokenizer tokenizer = new Tokenizer("[]");
             tokenizer.NextToken();
         }
+
+        [TestMethod]
+        public void ParseNewLineAsEndOfLine()
+        {
+            Tokenizer tokenizer = new Tokenizer("\n");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.EndOfLine, token.Type);
+            Assert.AreEqual("\n", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
+
+        [TestMethod]
+        public void ParseCarriageReturnNewLineAsEndOfLine()
+        {
+            Tokenizer tokenizer = new Tokenizer("\r\n");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.EndOfLine, token.Type);
+            Assert.AreEqual("\n", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
     }
 }
