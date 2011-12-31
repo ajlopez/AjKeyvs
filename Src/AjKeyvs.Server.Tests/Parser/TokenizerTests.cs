@@ -23,5 +23,19 @@ namespace AjKeyvs.Server.Tests.Parser
 
             Assert.IsNull(tokenizer.NextToken());
         }
+
+        [TestMethod]
+        public void ParseNameWithSpaces()
+        {
+            Tokenizer tokenizer = new Tokenizer("name");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.Name, token.Type);
+            Assert.AreEqual("name", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
     }
 }
