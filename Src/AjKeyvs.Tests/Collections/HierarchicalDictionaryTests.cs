@@ -45,5 +45,13 @@ namespace AjKeyvs.Tests.Collections
     
             Assert.AreEqual(800, this.dictionary["users:1:age"]);
         }
+
+        [TestMethod]
+        public void SetAndGetSimpleIntegerKeyValue()
+        {
+            this.dictionary["1"] = "one";
+
+            Assert.AreEqual("one", this.dictionary["1"]);
+        }
     }
 }
