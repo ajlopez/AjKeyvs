@@ -24,5 +24,15 @@ namespace AjKeyvs.Server.Tests
             processor.Process();
             Assert.AreEqual(1ul, repository.GetValue("counter"));
         }
+
+        [TestMethod]
+        public void ProcessTwoSetKeyValues()
+        {
+            Processor processor = new Processor(this.repository, "set users:1:age 800\nset users:1:height 180");
+            processor.Process();
+            processor.Process();
+            Assert.AreEqual(800ul, repository.GetValue("users:1:age"));
+            Assert.AreEqual(180ul, repository.GetValue("users:1:height"));
+        }
     }
 }
