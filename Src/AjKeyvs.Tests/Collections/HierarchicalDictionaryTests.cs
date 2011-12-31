@@ -10,12 +10,12 @@ namespace AjKeyvs.Tests.Collections
     [TestClass]
     public class HierarchicalDictionaryTests
     {
-        private HierarchicalDictionary<string> dictionary;
+        private HierarchicalDictionary<object> dictionary;
 
         [TestInitialize]
         public void Setup()
         {
-            this.dictionary = new HierarchicalDictionary<string>();
+            this.dictionary = new HierarchicalDictionary<object>();
         }
 
         [TestMethod]
@@ -28,6 +28,13 @@ namespace AjKeyvs.Tests.Collections
         public void GetCompositeKeyUndefinedValue()
         {
             Assert.IsNull(this.dictionary["users:1"]);
+        }
+
+        [TestMethod]
+        public void SetAndGetSimpleKeyValue()
+        {
+            this.dictionary["one"] = 1;
+            Assert.AreEqual(1, this.dictionary["one"]);
         }
     }
 }
