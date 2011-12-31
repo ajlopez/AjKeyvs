@@ -39,12 +39,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\TokenizerTests.cs" />
+    <Compile Include="ProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AjKeyvs.Server\AjKeyvs.Server.csproj">
       <Project>{9E9AD9CA-8FDC-4E0D-8574-6DE5D6E3F16F}</Project>
       <Name>AjKeyvs.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AjKeyvs\AjKeyvs.csproj">
+      <Project>{12A23F77-F9A4-4919-974E-30FEB8721166}</Project>
+      <Name>AjKeyvs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
