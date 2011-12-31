@@ -102,5 +102,33 @@ namespace AjKeyvs.Server.Tests.Parser
 
             Assert.IsNull(tokenizer.NextToken());
         }
+
+        [TestMethod]
+        public void ParseCompositeKeyAsName()
+        {
+            Tokenizer tokenizer = new Tokenizer("users:1:name");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.Name, token.Type);
+            Assert.AreEqual("users:1:name", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
+
+        [TestMethod]
+        public void ParseNameWithUnderscores()
+        {
+            Tokenizer tokenizer = new Tokenizer("user_name");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.Name, token.Type);
+            Assert.AreEqual("user_name", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
     }
 }

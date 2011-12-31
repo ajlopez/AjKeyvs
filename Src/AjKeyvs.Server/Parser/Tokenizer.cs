@@ -8,6 +8,8 @@
 
     public class Tokenizer
     {
+        private static string namechars = ":_";
+
         private TextReader reader;
         private Stack<int> chars = new Stack<int>();
 
@@ -39,17 +41,17 @@
                 return NextInteger(ch);
 
             if (char.IsLetter(ch))
-                return NextString(ch);
+                return NextName(ch);
 
             throw new InvalidDataException(string.Format("Unexpected character '{0}'", ch));
         }
 
-        private Token NextString(char ch)
+        private Token NextName(char ch)
         {
             string value = new String(ch, 1);
             int ich;
 
-            for (ich = this.NextChar(); ich != -1 && char.IsLetterOrDigit((char)ich); ich = this.NextChar())
+            for (ich = this.NextChar(); ich != -1 && (char.IsLetterOrDigit((char)ich) || namechars.Contains((char)ich)); ich = this.NextChar())
                 value += (char)ich;
 
             if (ich != -1)
