@@ -35,7 +35,10 @@
             if (char.IsDigit(ch))
                 return NextInteger(ch);
 
-            return NextString(ch);
+            if (char.IsLetter(ch))
+                return NextString(ch);
+
+            throw new InvalidDataException(string.Format("Unexpected character '{0}'", ch));
         }
 
         private Token NextString(char ch)
