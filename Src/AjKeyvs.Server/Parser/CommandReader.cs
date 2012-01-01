@@ -9,6 +9,8 @@
     public class CommandReader
     {
         private Tokenizer tokenizer;
+        private bool islinereader;
+        private bool eof;
 
         public CommandReader(string text)
             : this(new StringReader(text))
@@ -16,12 +18,21 @@
         }
 
         public CommandReader(TextReader reader)
+            : this(reader, false)
+        {
+        }
+
+        public CommandReader(TextReader reader, bool islinereader)
         {
             this.tokenizer = new Tokenizer(reader);
+            this.islinereader = islinereader;
         }
 
         public Command NextCommand()
         {
+            if (this.eof)
+                return null;
+
             Token token = this.tokenizer.NextToken();
 
             if (token == null)
@@ -58,6 +69,11 @@
 
                 token = this.tokenizer.NextToken();
             }
+
+            if (token == null)
+                this.eof = true;
+            else if (this.islinereader && token.Type == TokenType.EndOfLine)
+                this.eof = true;
 
             return new Command(verb, key, parameters);
         }

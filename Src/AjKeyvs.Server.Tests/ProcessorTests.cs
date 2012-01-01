@@ -53,6 +53,46 @@ namespace AjKeyvs.Server.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenGetCommandHasParameter()
+        {
+            Processor processor = new Processor(this.repository, "get counter 1");
+            processor.Process();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenCommandHasNoKey()
+        {
+            Processor processor = new Processor(this.repository, "get");
+            processor.Process();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenCommandHasAKeyThatIsNotAName()
+        {
+            Processor processor = new Processor(this.repository, "get 1");
+            processor.Process();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenCommandHasAVerbThatIsNotAName()
+        {
+            Processor processor = new Processor(this.repository, "1 2 3");
+            processor.Process();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenSetCommandHasManyValues()
+        {
+            Processor processor = new Processor(this.repository, "set counter 1 2");
+            processor.Process();
+        }
+
+        [TestMethod]
         public void SetAndGetOneThousandUsers()
         {
             for (int k = 1; k <= 1000; k++)

@@ -75,5 +75,16 @@ namespace AjKeyvs.Server.Tests.Parser
 
             Command command = reader.NextCommand();
         }
+
+        [TestMethod]
+        public void LineReaderParseOnlyOneCommandInFirstLine()
+        {
+            CommandReader reader = new CommandReader(new StringReader("get key1\r\nget key2"), true);
+
+            Command command = reader.NextCommand();
+            Assert.IsNotNull(command);
+
+            Assert.IsNull(reader.NextCommand());
+        }
     }
 }
