@@ -22,5 +22,15 @@ namespace AjKeyvs.Server.Tests.Parser
             Assert.AreEqual("users:1:name", command.Key);
             Assert.IsNull(command.Parameters);
         }
+
+        [TestMethod]
+        public void ParseNullCommand()
+        {
+            CommandReader reader = new CommandReader("");
+
+            Command command = reader.NextCommand();
+
+            Assert.IsNull(command);
+        }
     }
 }

@@ -23,6 +23,10 @@
         public Command NextCommand()
         {
             Token token = this.tokenizer.NextToken();
+
+            if (token == null)
+                return null;
+
             string verb = token.Value;
             token = this.tokenizer.NextToken();
             string key = token.Value;
