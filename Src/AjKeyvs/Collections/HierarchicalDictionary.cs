@@ -24,7 +24,7 @@
             set
             {
                 if (IsSimpleKey(key))
-                    SetSimpleyKeyValue(key, value);
+                    SetSimpleKeyValue(key, value);
                 else
                     SetCompositeKeyValue(key, value);
             }
@@ -35,13 +35,13 @@
             return key.IndexOf(':') < 0;
         }
 
-        private void SetSimpleyKeyValue(string key, T value)
+        private void SetSimpleKeyValue(string key, T value)
         {
             ulong lkey;
 
             if (ulong.TryParse(key, out lkey))
             {
-                SetSimpleyKeyValue(lkey, value);
+                SetSimpleKeyValue(lkey, value);
                 return;
             }
 
@@ -51,7 +51,7 @@
             this.values[key] = value;
         }
 
-        private void SetSimpleyKeyValue(ulong key, T value)
+        private void SetSimpleKeyValue(ulong key, T value)
         {
             if (this.valuearray == null)
                 this.valuearray = new BigArray<T>();

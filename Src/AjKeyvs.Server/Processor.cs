@@ -9,70 +9,47 @@ namespace AjKeyvs.Server
 {
     public class Processor
     {
-        private Tokenizer tokenizer;
+        private CommandReader reader;
         private Repository repository;
 
         public Processor(Repository repository, string text)
-            : this(repository, new StringReader(text))
+            : this(repository, new CommandReader(text))
         {
         }
 
         public Processor(Repository repository, TextReader reader)
+            : this(repository, new CommandReader(reader))
+        {
+        }
+
+        public Processor(Repository repository, CommandReader reader)
         {
             this.repository = repository;
-            this.tokenizer = new Tokenizer(reader);
+            this.reader = reader;
         }
 
         public object Process()
         {
-            string command = this.GetName();
-            if (command == "set")
+            Command command = this.reader.NextCommand();
+
+            if (command == null)
+                return null;
+
+            if (command.Verb == "set")
             {
-                string key = this.GetName();
-                ulong value = this.GetIntegerValue();
-                this.GetEndOfCommand();
+                string key = command.Key;
+                object value = command.Parameters[0];
 
                 this.repository.SetValue(key, value);
                 return null;
             }
 
-            if (command == "get")
+            if (command.Verb == "get")
             {
-                string key = this.GetName();
-                this.GetEndOfCommand();
+                string key = command.Key;
 
                 return this.repository.GetValue(key);
             }
-
-            throw new InvalidDataException();
-        }
-
-        private string GetName()
-        {
-            Token token = this.tokenizer.NextToken();
-
-            if (token == null || token.Type != TokenType.Name)
-                throw new InvalidDataException();
-
-            return token.Value;
-        }
-
-        private ulong GetIntegerValue()
-        {
-            Token token = this.tokenizer.NextToken();
-
-            if (token == null || token.Type != TokenType.Integer)
-                throw new InvalidDataException();
-
-            return ulong.Parse(token.Value);
-        }
-
-        private void GetEndOfCommand()
-        {
-            Token token = this.tokenizer.NextToken();
-
-            if (token == null || token.Type == TokenType.EndOfLine)
-                return;
 
             throw new InvalidDataException();
         }
