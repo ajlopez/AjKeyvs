@@ -18,5 +18,17 @@ namespace AjKeyvs.Server.Tests
             Assert.AreEqual("users:1:name", command.Key);
             Assert.IsNull(command.Parameters);
         }
+
+        [TestMethod]
+        public void CreateCommandWithParameters()
+        {
+            Command command = new Command("set", "users:1:id", new object[] { 1ul });
+
+            Assert.AreEqual("set", command.Verb);
+            Assert.AreEqual("users:1:id", command.Key);
+            Assert.IsNotNull(command.Parameters);
+            Assert.AreEqual(1, command.Parameters.Count);
+            Assert.AreEqual(1ul, command.Parameters[0]);
+        }
     }
 }
