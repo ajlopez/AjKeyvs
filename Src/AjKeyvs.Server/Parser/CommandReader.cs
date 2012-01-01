@@ -31,7 +31,15 @@
                 throw new InvalidDataException("Invalid Verb");
 
             string verb = token.Value;
+
             token = this.tokenizer.NextToken();
+
+            if (token == null)
+                throw new InvalidDataException("No Key in Command");
+
+            if (token.Type != TokenType.Name)
+                throw new InvalidDataException("Invalid Key");
+
             string key = token.Value;
 
             return new Command(verb, key, null);

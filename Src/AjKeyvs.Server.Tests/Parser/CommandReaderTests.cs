@@ -42,5 +42,23 @@ namespace AjKeyvs.Server.Tests.Parser
 
             Command command = reader.NextCommand();
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException), "Invalid Key")]
+        public void RaiseWhenKeyIsNotAName()
+        {
+            CommandReader reader = new CommandReader("get 1");
+
+            Command command = reader.NextCommand();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException), "No Key in Command")]
+        public void RaiseWhenNoKey()
+        {
+            CommandReader reader = new CommandReader("get");
+
+            Command command = reader.NextCommand();
+        }
     }
 }
