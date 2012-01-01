@@ -4,6 +4,7 @@
   <CodeCoverage enabled="true">
     <Regular>
       <CodeCoverageItem binaryFile="AjKeyvs\bin\Debug\AjKeyvs.dll" pdbFile="AjKeyvs\bin\Debug\AjKeyvs.pdb" instrumentInPlace="true" />
+      <CodeCoverageItem binaryFile="AjKeyvs.Server\bin\Debug\AjKeyvs.Server.exe" pdbFile="AjKeyvs.Server\bin\Debug\AjKeyvs.Server.pdb" instrumentInPlace="true" />
     </Regular>
   </CodeCoverage>
   <TestTypeSpecific>
