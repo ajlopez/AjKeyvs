@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace AjKeyvs.Server.Tests
 {
@@ -43,6 +44,13 @@ namespace AjKeyvs.Server.Tests
             Assert.AreEqual(1ul, processor.Process());
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaiseWhenSetCommandHasNoValue()
+        {
+            Processor processor = new Processor(this.repository, "set counter");
+            processor.Process();
+        }
 
         [TestMethod]
         public void SetAndGetOneThousandUsers()

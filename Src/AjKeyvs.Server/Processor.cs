@@ -37,6 +37,7 @@ namespace AjKeyvs.Server
 
             if (command.Verb == "set")
             {
+                CheckArity(command, 1);
                 string key = command.Key;
                 object value = command.Parameters[0];
 
@@ -46,12 +47,22 @@ namespace AjKeyvs.Server
 
             if (command.Verb == "get")
             {
+                CheckArity(command, 0);
                 string key = command.Key;
 
                 return this.repository.GetValue(key);
             }
 
             throw new InvalidDataException();
+        }
+
+        private static void CheckArity(Command command, int arity)
+        {
+            if (arity == 0 && command.Parameters != null && command.Parameters.Count != 0)
+                throw new InvalidDataException("0 parameters expected");
+
+            if (arity != 0 && (command.Parameters == null || command.Parameters.Count != arity))
+                throw new InvalidDataException(string.Format("{0} parameters expected", arity));
         }
     }
 }
