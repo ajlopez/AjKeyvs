@@ -25,6 +25,21 @@ namespace AjKeyvs.Server.Tests.Parser
         }
 
         [TestMethod]
+        public void ParseSetCommand()
+        {
+            CommandReader reader = new CommandReader("set users:1:name \"Adam\"");
+
+            Command command = reader.NextCommand();
+
+            Assert.IsNotNull(command);
+            Assert.AreEqual("set", command.Verb);
+            Assert.AreEqual("users:1:name", command.Key);
+            Assert.IsNotNull(command.Parameters);
+            Assert.AreEqual(1, command.Parameters.Count);
+            Assert.AreEqual("Adam", command.Parameters[0]);
+        }
+
+        [TestMethod]
         public void ParseNullCommand()
         {
             CommandReader reader = new CommandReader("");

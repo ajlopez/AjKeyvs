@@ -42,7 +42,24 @@
 
             string key = token.Value;
 
-            return new Command(verb, key, null);
+            IList<object> parameters = null;
+
+            token = this.tokenizer.NextToken();
+
+            while (token != null && token.Type != TokenType.EndOfLine)
+            {
+                if (parameters == null)
+                    parameters = new List<object>();
+
+                if (token.Type == TokenType.Integer)
+                    parameters.Add(ulong.Parse(token.Value));
+                else
+                    parameters.Add(token.Value);
+
+                token = this.tokenizer.NextToken();
+            }
+
+            return new Command(verb, key, parameters);
         }
     }
 }

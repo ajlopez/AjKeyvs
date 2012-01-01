@@ -130,5 +130,39 @@ namespace AjKeyvs.Server.Tests.Parser
 
             Assert.IsNull(tokenizer.NextToken());
         }
+
+        [TestMethod]
+        public void ParseSimpleString()
+        {
+            Tokenizer tokenizer = new Tokenizer("\"Adam\"");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.String, token.Type);
+            Assert.AreEqual("Adam", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
+
+        [TestMethod]
+        public void ParseTwoStrings()
+        {
+            Tokenizer tokenizer = new Tokenizer("\"Adam\" \"Smith\"");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.String, token.Type);
+            Assert.AreEqual("Adam", token.Value);
+
+            token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.String, token.Type);
+            Assert.AreEqual("Smith", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
     }
 }

@@ -37,6 +37,9 @@
             if (ch == '\n')
                 return new Token(TokenType.EndOfLine, "\n");
 
+            if (ch == '"')
+                return NextString();
+
             if (char.IsDigit(ch))
                 return NextInteger(ch);
 
@@ -58,6 +61,20 @@
                 this.PushChar(ich);
 
             return new Token(TokenType.Name, value);
+        }
+
+        private Token NextString()
+        {
+            string value = string.Empty;
+            int ich;
+
+            for (ich = this.NextChar(); ich != -1 && ((char) ich) != '"'; ich = this.NextChar())
+                value += (char)ich;
+
+            if (ich == -1)
+                throw new InvalidDataException("Expected '\"'");
+
+            return new Token(TokenType.String, value);
         }
 
         private Token NextInteger(char ch)
