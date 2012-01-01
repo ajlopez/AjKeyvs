@@ -22,7 +22,7 @@ namespace AjKeyvs.Server.Tests
         public void ProcessSetKeyValue()
         {
             Processor processor = new Processor(this.repository, "set counter 1");
-            Assert.IsNull(processor.Process());
+            Assert.IsFalse(processor.ProcessCommand().HasValue);
             Assert.AreEqual(1ul, repository.GetValue("counter"));
         }
 
@@ -30,8 +30,8 @@ namespace AjKeyvs.Server.Tests
         public void ProcessTwoSetKeyValues()
         {
             Processor processor = new Processor(this.repository, "set users:1:age 800\nset users:1:height 180");
-            Assert.IsNull(processor.Process());
-            Assert.IsNull(processor.Process());
+            Assert.IsFalse(processor.ProcessCommand().HasValue);
+            Assert.IsFalse(processor.ProcessCommand().HasValue);
             Assert.AreEqual(800ul, repository.GetValue("users:1:age"));
             Assert.AreEqual(180ul, repository.GetValue("users:1:height"));
         }
@@ -40,8 +40,8 @@ namespace AjKeyvs.Server.Tests
         public void ProcessSetAndGetKeyValue()
         {
             Processor processor = new Processor(this.repository, "set counter 1\nget counter");
-            Assert.IsNull(processor.Process());
-            Assert.AreEqual(1ul, processor.Process());
+            Assert.IsFalse(processor.ProcessCommand().HasValue);
+            Assert.AreEqual(1ul, processor.ProcessCommand().Value);
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenSetCommandHasNoValue()
         {
             Processor processor = new Processor(this.repository, "set counter");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenGetCommandHasParameter()
         {
             Processor processor = new Processor(this.repository, "get counter 1");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenCommandHasNoKey()
         {
             Processor processor = new Processor(this.repository, "get");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenCommandHasAKeyThatIsNotAName()
         {
             Processor processor = new Processor(this.repository, "get 1");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenCommandHasAVerbThatIsNotAName()
         {
             Processor processor = new Processor(this.repository, "1 2 3");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace AjKeyvs.Server.Tests
         public void RaiseWhenSetCommandHasManyValues()
         {
             Processor processor = new Processor(this.repository, "set counter 1 2");
-            processor.Process();
+            processor.ProcessCommand();
         }
 
         [TestMethod]
@@ -98,15 +98,15 @@ namespace AjKeyvs.Server.Tests
             for (int k = 1; k <= 1000; k++)
             {
                 Processor processor = new Processor(this.repository, string.Format("set users:{0}:age {0}\nset users:{0}:id {0}", k));
-                Assert.IsNull(processor.Process());
-                Assert.IsNull(processor.Process());
+                Assert.IsFalse(processor.ProcessCommand().HasValue);
+                Assert.IsFalse(processor.ProcessCommand().HasValue);
             }
 
             for (int k = 1; k <= 1000; k++)
             {
                 Processor processor = new Processor(this.repository, string.Format("get users:{0}:age\nget users:{0}:id", k));
-                Assert.AreEqual((ulong) k, processor.Process());
-                Assert.AreEqual((ulong)k, processor.Process());
+                Assert.AreEqual((ulong) k, processor.ProcessCommand().Value);
+                Assert.AreEqual((ulong)k, processor.ProcessCommand().Value);
             }
         }
     }

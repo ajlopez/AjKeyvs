@@ -9,6 +9,8 @@ namespace AjKeyvs.Server
 {
     public class Processor
     {
+        private static CommandResult ok = new CommandResult();
+
         private CommandReader reader;
         private Repository repository;
 
@@ -28,7 +30,7 @@ namespace AjKeyvs.Server
             this.reader = reader;
         }
 
-        public object Process()
+        public CommandResult ProcessCommand()
         {
             Command command = this.reader.NextCommand();
 
@@ -42,7 +44,7 @@ namespace AjKeyvs.Server
                 object value = command.Parameters[0];
 
                 this.repository.SetValue(key, value);
-                return null;
+                return ok;
             }
 
             if (command.Verb == "get")
@@ -50,7 +52,7 @@ namespace AjKeyvs.Server
                 CheckArity(command, 0);
                 string key = command.Key;
 
-                return this.repository.GetValue(key);
+                return new CommandResult(this.repository.GetValue(key));
             }
 
             throw new InvalidDataException();
