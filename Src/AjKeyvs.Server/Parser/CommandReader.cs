@@ -27,6 +27,9 @@
             if (token == null)
                 return null;
 
+            if (token.Type != TokenType.Name)
+                throw new InvalidDataException("Invalid Verb");
+
             string verb = token.Value;
             token = this.tokenizer.NextToken();
             string key = token.Value;

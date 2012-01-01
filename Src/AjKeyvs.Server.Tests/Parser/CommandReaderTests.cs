@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AjKeyvs.Server.Parser;
+using System.IO;
 
 namespace AjKeyvs.Server.Tests.Parser
 {
@@ -31,6 +32,15 @@ namespace AjKeyvs.Server.Tests.Parser
             Command command = reader.NextCommand();
 
             Assert.IsNull(command);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException), "Invalid Verb")]
+        public void RaiseWhenVerbIsNotAName()
+        {
+            CommandReader reader = new CommandReader("1");
+
+            Command command = reader.NextCommand();
         }
     }
 }
