@@ -23,5 +23,13 @@ namespace AjKeyvs.Tests.Collections
         {
             Assert.IsFalse(this.set["foo"]);
         }
+
+        [TestMethod]
+        public void SetAndGetString()
+        {
+            this.set["foo"] = true;
+            Assert.IsTrue(this.set["foo"]);
+            Assert.IsFalse(this.set["bar"]);
+        }
     }
 }
