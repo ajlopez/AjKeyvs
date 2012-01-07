@@ -25,6 +25,7 @@ namespace AjKeyvs.Server
             commands["get"] = new GetValueCommand();
 
             commands["sadd"] = new SetAddMemberCommand();
+            commands["sismember"] = new SetIsMemberCommand();
         }
 
         public Processor(Repository repository, string text)

@@ -112,24 +112,16 @@ namespace AjKeyvs.Server.Tests
         }
 
         [TestMethod]
-        public void SetAddMember()
+        public void SetAddAndIsMember()
         {
-            string command = string.Format("sadd users:1:followers {0}", 1);
-            Processor processor = new Processor(this.repository, command);
+            string command = string.Format("sadd users:1:followers {0}\r\nsismember users:1:followers {0}", 1);
+            Processor processor = new Processor(this.repository, new StringReader(command));
+            processor.ProcessCommand();
             CommandResult result = processor.ProcessCommand();
 
             Assert.IsNotNull(result);
-
-            object value = this.repository.GetValue("users:1:followers");
-
-            Assert.IsNotNull(value);
-            Assert.IsInstanceOfType(value, typeof(BigBitSet));
-
-            BigBitSet set = (BigBitSet)value;
-
-            Assert.IsTrue(set[1ul]);
-            Assert.IsFalse(set[0ul]);
-            Assert.IsFalse(set[2ul]);
+            Assert.IsTrue(result.HasValue);
+            Assert.AreEqual(true, result.Value);
         }
     }
 }
