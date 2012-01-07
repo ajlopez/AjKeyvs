@@ -125,9 +125,36 @@ namespace AjKeyvs.Server.Tests
         }
 
         [TestMethod]
+        public void SetAddAndIsMemberString()
+        {
+            string command = string.Format("sadd users:1:followers \"user{0}\"\r\nsismember users:1:followers \"user{0}\"", 1);
+            Processor processor = new Processor(this.repository, new StringReader(command));
+            processor.ProcessCommand();
+            CommandResult result = processor.ProcessCommand();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.HasValue);
+            Assert.AreEqual(true, result.Value);
+        }
+
+        [TestMethod]
         public void SetAddRemoveAndIsMember()
         {
             string command = string.Format("sadd users:1:followers {0}\r\nsrem users:1:followers {0}\r\nsismember users:1:followers {0}", 1);
+            Processor processor = new Processor(this.repository, new StringReader(command));
+            processor.ProcessCommand();
+            processor.ProcessCommand();
+            CommandResult result = processor.ProcessCommand();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.HasValue);
+            Assert.AreEqual(false, result.Value);
+        }
+
+        [TestMethod]
+        public void SetAddRemoveAndIsMemberString()
+        {
+            string command = string.Format("sadd users:1:followers \"user{0}\"\r\nsrem users:1:followers \"user{0}\"\r\nsismember users:1:followers \"user{0}\"", 1);
             Processor processor = new Processor(this.repository, new StringReader(command));
             processor.ProcessCommand();
             processor.ProcessCommand();
@@ -144,6 +171,21 @@ namespace AjKeyvs.Server.Tests
             for (int k = 1; k <= 1000; k++)
             {
                 string command = string.Format("sismember users:1:followers {0}", 1);
+                Processor processor = new Processor(this.repository, new StringReader(command));
+                CommandResult result = processor.ProcessCommand();
+
+                Assert.IsNotNull(result);
+                Assert.IsTrue(result.HasValue);
+                Assert.AreEqual(false, result.Value);
+            }
+        }
+
+        [TestMethod]
+        public void SetIsStringMemberOnEmptySet()
+        {
+            for (int k = 1; k <= 1000; k++)
+            {
+                string command = string.Format("sismember users:1:followers \"user{0}\"", 1);
                 Processor processor = new Processor(this.repository, new StringReader(command));
                 CommandResult result = processor.ProcessCommand();
 

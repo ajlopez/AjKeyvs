@@ -13,9 +13,19 @@
         {
             info.CheckArity(1);
             string key = info.Key;
-            ulong value = (ulong) info.Parameters[0];
 
-            repository.SetAddMember(key, value);
+            if (info.Parameters[0] is ulong)
+            {
+                ulong value = (ulong)info.Parameters[0];
+
+                repository.SetAddMember(key, value);
+            }
+            else            
+            {
+                string value = (string)info.Parameters[0];
+                repository.SetAddMember(key, value);
+            }
+
             return ok;
         }
     }
