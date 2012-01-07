@@ -43,6 +43,27 @@
             list.Add(member);
         }
 
+        public void RemoveMember(string member)
+        {
+            if (this.members == null)
+                return;
+
+            ulong position = GetPosition(member);
+
+            var list = this.members[position];
+
+            if (list == null)
+                return;
+
+            if (list.Contains(member)) 
+            {
+                list.Remove(member);
+
+                if (list.Count == 0)
+                    this.members[position] = null;
+            }
+        }
+
         private static ulong GetPosition(string text)
         {
             int hash = text.GetHashCode();
