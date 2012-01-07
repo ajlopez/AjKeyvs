@@ -12,8 +12,18 @@ namespace AjKeyvs.Server
     {
         private static CommandResult ok = new CommandResult();
 
+        private static IDictionary<string, ICommand> commands;
+
         private CommandReader reader;
         private Repository repository;
+
+        static Processor()
+        {
+            commands = new Dictionary<string, ICommand>();
+
+            commands["set"] = new SetValueCommand();
+            commands["get"] = new GetValueCommand();
+        }
 
         public Processor(Repository repository, string text)
             : this(repository, new CommandReader(text))
@@ -33,34 +43,15 @@ namespace AjKeyvs.Server
 
         public CommandResult ProcessCommand()
         {
-            CommandInfo command = this.reader.NextCommand();
+            CommandInfo info = this.reader.NextCommand();
 
-            if (command == null)
+            if (info == null)
                 return null;
 
-            if (command.Verb == "set")
-            {
-                return ((new SetValueCommand()).Process(command, this.repository));
-            }
+            if (!commands.ContainsKey(info.Verb))
+                throw new InvalidDataException();
 
-            if (command.Verb == "get")
-            {
-                CheckArity(command, 0);
-                string key = command.Key;
-
-                return new CommandResult(this.repository.GetValue(key));
-            }
-
-            throw new InvalidDataException();
-        }
-
-        private static void CheckArity(CommandInfo command, int arity)
-        {
-            if (arity == 0 && command.Parameters != null && command.Parameters.Count != 0)
-                throw new InvalidDataException("0 parameters expected");
-
-            if (arity != 0 && (command.Parameters == null || command.Parameters.Count != arity))
-                throw new InvalidDataException(string.Format("{0} parameters expected", arity));
+            return commands[info.Verb].Process(info, this.repository);
         }
     }
 }

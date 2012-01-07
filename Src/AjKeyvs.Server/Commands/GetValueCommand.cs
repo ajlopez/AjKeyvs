@@ -5,18 +5,14 @@
     using System.Linq;
     using System.Text;
 
-    class SetValueCommand : AjKeyvs.Server.Commands.ICommand
+    class GetValueCommand : AjKeyvs.Server.Commands.ICommand
     {
-        private static CommandResult ok = new CommandResult();
-
         public CommandResult Process(CommandInfo info, Repository repository)
         {
-            info.CheckArity(1);
+            info.CheckArity(0);
             string key = info.Key;
-            object value = info.Parameters[0];
 
-            repository.SetValue(key, value);
-            return ok;
+            return new CommandResult(repository.GetValue(key));
         }
     }
 }
