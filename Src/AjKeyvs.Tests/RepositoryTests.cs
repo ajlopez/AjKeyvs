@@ -45,5 +45,45 @@ namespace AjKeyvs.Tests
                 Assert.AreEqual(k, this.repository.GetValue(string.Format("users:{0}:id", k)));
             }
         }
+
+        [TestMethod]
+        public void GetItemsFromEmptySet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void SetAndGetItemsFromSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetAddValue("users:1:followers", (ulong) k);
+
+            for (int k = 1; k <= 1000; k++) 
+                Assert.IsTrue(this.repository.SetHasValue("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void SetRemoveAndGetItemsSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetAddValue("users:1:followers", (ulong)k);
+
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetRemoveValue("users:1:followers", (ulong)k);
+
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void RemoveAndGetItemsSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetRemoveValue("users:1:followers", (ulong)k);
+
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+        }
     }
 }
