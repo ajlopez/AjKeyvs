@@ -19,17 +19,17 @@ namespace AjKeyvs.Tests.Collections
         }
 
         [TestMethod]
-        public void GetStringOnEmptySet()
+        public void HasMemberOnEmptySet()
         {
-            Assert.IsFalse(this.set["foo"]);
+            Assert.IsFalse(this.set.HasMember("foo"));
         }
 
         [TestMethod]
         public void SetAndGetString()
         {
-            this.set["foo"] = true;
-            Assert.IsTrue(this.set["foo"]);
-            Assert.IsFalse(this.set["bar"]);
+            this.set.AddMember("foo");
+            Assert.IsTrue(this.set.HasMember("foo"));
+            Assert.IsFalse(this.set.HasMember("bar"));
         }
     }
 }

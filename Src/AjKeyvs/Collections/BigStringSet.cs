@@ -9,41 +9,38 @@
     {
         private BigArray<IList<string>> members;
 
-        public bool this[string index]
+        public bool HasMember(string member)
         {
-            get
+            if (this.members == null)
+                return false;
+
+            var list = this.members[GetPosition(member)];
+
+            if (list == null)
+                return false;
+
+            return list.Contains(member);
+        }
+
+        public void AddMember(string member)
+        {
+            if (this.members == null)
+                this.members = new BigArray<IList<string>>();
+
+            ulong position = GetPosition(member);
+
+            var list = this.members[position];
+
+            if (list == null)
             {
-                if (this.members == null)
-                    return false;
-
-                var list = this.members[GetPosition(index)];
-
-                if (list == null)
-                    return false;
-
-                return list.Contains(index);
+                list = new List<string>();
+                this.members[position] = list;
             }
 
-            set
-            {
-                if (this.members == null)
-                    this.members = new BigArray<IList<string>>();
+            if (list.Contains(member))
+                return;
 
-                ulong position = GetPosition(index);
-
-                var list = this.members[position];
-
-                if (list == null)
-                {
-                    list = new List<string>();
-                    this.members[position] = list;
-                }
-
-                if (list.Contains(index))
-                    return;
-
-                list.Add(index);
-            }
+            list.Add(member);
         }
 
         private static ulong GetPosition(string text)
