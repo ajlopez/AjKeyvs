@@ -32,7 +32,7 @@ namespace AjKeyvs.Server
 
         public CommandResult ProcessCommand()
         {
-            Command command = this.reader.NextCommand();
+            CommandInfo command = this.reader.NextCommand();
 
             if (command == null)
                 return null;
@@ -58,7 +58,7 @@ namespace AjKeyvs.Server
             throw new InvalidDataException();
         }
 
-        private static void CheckArity(Command command, int arity)
+        private static void CheckArity(CommandInfo command, int arity)
         {
             if (arity == 0 && command.Parameters != null && command.Parameters.Count != 0)
                 throw new InvalidDataException("0 parameters expected");

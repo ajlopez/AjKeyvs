@@ -38,7 +38,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandTests.cs" />
+    <Compile Include="CommandInfoTests.cs" />
     <Compile Include="Parser\CommandReaderTests.cs" />
     <Compile Include="Parser\TokenizerTests.cs" />
     <Compile Include="ProcessorTests.cs" />

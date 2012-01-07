@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
+    <Compile Include="CommandInfo.cs" />
     <Compile Include="CommandResult.cs" />
     <Compile Include="Parser\CommandReader.cs" />
     <Compile Include="Parser\Token.cs" />

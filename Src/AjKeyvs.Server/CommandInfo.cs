@@ -5,13 +5,13 @@
     using System.Linq;
     using System.Text;
 
-    public class Command
+    public class CommandInfo
     {
         private string verb;
         private string key;
         private IList<object> parameters;
 
-        public Command(string verb, string key, IEnumerable<object> parameters)
+        public CommandInfo(string verb, string key, IEnumerable<object> parameters)
         {
             this.verb = verb;
             this.key = key;

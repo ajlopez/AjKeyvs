@@ -16,7 +16,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("get users:1:name");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
 
             Assert.IsNotNull(command);
             Assert.AreEqual("get", command.Verb);
@@ -29,7 +29,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("set users:1:name \"Adam\"");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
 
             Assert.IsNotNull(command);
             Assert.AreEqual("set", command.Verb);
@@ -44,7 +44,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
 
             Assert.IsNull(command);
         }
@@ -55,7 +55,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("1");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("get 1");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader("get");
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace AjKeyvs.Server.Tests.Parser
         {
             CommandReader reader = new CommandReader(new StringReader("get key1\r\nget key2"), true);
 
-            Command command = reader.NextCommand();
+            CommandInfo command = reader.NextCommand();
             Assert.IsNotNull(command);
 
             Assert.IsNull(reader.NextCommand());

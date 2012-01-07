@@ -28,7 +28,7 @@
             this.islinereader = islinereader;
         }
 
-        public Command NextCommand()
+        public CommandInfo NextCommand()
         {
             if (this.eof)
                 return null;
@@ -75,7 +75,7 @@
             else if (this.islinereader && token.Type == TokenType.EndOfLine)
                 this.eof = true;
 
-            return new Command(verb, key, parameters);
+            return new CommandInfo(verb, key, parameters);
         }
     }
 }
