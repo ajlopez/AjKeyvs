@@ -15,7 +15,7 @@
             string key = info.Key;
             ulong value = (ulong) info.Parameters[0];
 
-            repository.SetAddValue(key, value);
+            repository.SetAddMember(key, value);
             return ok;
         }
     }

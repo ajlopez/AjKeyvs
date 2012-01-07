@@ -20,7 +20,7 @@
             this.values[key] = value;
         }
 
-        public void SetAddValue(string key, ulong value)
+        public void SetAddMember(string key, ulong member)
         {
             BigBitSet set = (BigBitSet)this.values[key];
 
@@ -30,27 +30,60 @@
                 this.values[key] = set;
             }
 
-            set[value] = true;
+            set[member] = true;
         }
 
-        public bool SetHasValue(string key, ulong value)
+        public void SetAddMember(string key, string member)
+        {
+            BigStringSet set = (BigStringSet)this.values[key];
+
+            if (set == null)
+            {
+                set = new BigStringSet();
+                this.values[key] = set;
+            }
+
+            set.AddMember(member);
+        }
+
+        public bool SetHasMember(string key, ulong member)
         {
             BigBitSet set = (BigBitSet)this.values[key];
 
             if (set == null)
                 return false;
 
-            return set[value];
+            return set[member];
         }
 
-        public void SetRemoveValue(string key, ulong value)
+        public bool SetHasMember(string key, string member)
+        {
+            BigStringSet set = (BigStringSet)this.values[key];
+
+            if (set == null)
+                return false;
+
+            return set.HasMember(member);
+        }
+
+        public void SetRemoveMember(string key, ulong member)
         {
             BigBitSet set = (BigBitSet)this.values[key];
 
             if (set == null)
                 return;
 
-            set[value] = false;
+            set[member] = false;
+        }
+
+        public void SetRemoveMember(string key, string member)
+        {
+            BigStringSet set = (BigStringSet)this.values[key];
+
+            if (set == null)
+                return;
+
+            set.RemoveMember(member);
         }
     }
 }

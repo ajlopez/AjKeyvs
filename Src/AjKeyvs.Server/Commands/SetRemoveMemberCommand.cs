@@ -15,7 +15,7 @@
             string key = info.Key;
             ulong value = (ulong) info.Parameters[0];
 
-            repository.SetRemoveValue(key, value);
+            repository.SetRemoveMember(key, value);
             return ok;
         }
     }

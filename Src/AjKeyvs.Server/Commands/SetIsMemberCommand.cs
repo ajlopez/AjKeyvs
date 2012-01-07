@@ -15,7 +15,7 @@
             string key = info.Key;
             ulong value = (ulong) info.Parameters[0];
 
-            return new CommandResult(repository.SetHasValue(key, value));
+            return new CommandResult(repository.SetHasMember(key, value));
         }
     }
 }

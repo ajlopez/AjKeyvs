@@ -50,40 +50,80 @@ namespace AjKeyvs.Tests
         public void GetItemsFromEmptySet()
         {
             for (int k = 1; k <= 1000; k++)
-                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void GetStringItemsFromEmptySet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", string.Format("user{0}", k)));
         }
 
         [TestMethod]
         public void SetAndGetItemsFromSet()
         {
             for (int k = 1; k <= 1000; k++)
-                this.repository.SetAddValue("users:1:followers", (ulong) k);
+                this.repository.SetAddMember("users:1:followers", (ulong) k);
 
             for (int k = 1; k <= 1000; k++) 
-                Assert.IsTrue(this.repository.SetHasValue("users:1:followers", (ulong)k));
+                Assert.IsTrue(this.repository.SetHasMember("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void SetAndGetStringItemsFromSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetAddMember("users:1:followers", string.Format("user{0}", k));
+
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsTrue(this.repository.SetHasMember("users:1:followers", string.Format("user{0}",k)));
         }
 
         [TestMethod]
         public void SetRemoveAndGetItemsSet()
         {
             for (int k = 1; k <= 1000; k++)
-                this.repository.SetAddValue("users:1:followers", (ulong)k);
+                this.repository.SetAddMember("users:1:followers", (ulong)k);
 
             for (int k = 1; k <= 1000; k++)
-                this.repository.SetRemoveValue("users:1:followers", (ulong)k);
+                this.repository.SetRemoveMember("users:1:followers", (ulong)k);
 
             for (int k = 1; k <= 1000; k++)
-                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void SetRemoveAndGetStringItemsSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetAddMember("users:1:followers", string.Format("user{0}",k));
+
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetRemoveMember("users:1:followers", string.Format("user{0}",k));
+
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", string.Format("user{0}",k)));
         }
 
         [TestMethod]
         public void RemoveAndGetItemsSet()
         {
             for (int k = 1; k <= 1000; k++)
-                this.repository.SetRemoveValue("users:1:followers", (ulong)k);
+                this.repository.SetRemoveMember("users:1:followers", (ulong)k);
 
             for (int k = 1; k <= 1000; k++)
-                Assert.IsFalse(this.repository.SetHasValue("users:1:followers", (ulong)k));
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", (ulong)k));
+        }
+
+        [TestMethod]
+        public void RemoveAndGetStringItemsSet()
+        {
+            for (int k = 1; k <= 1000; k++)
+                this.repository.SetRemoveMember("users:1:followers", string.Format("user{0}",k));
+
+            for (int k = 1; k <= 1000; k++)
+                Assert.IsFalse(this.repository.SetHasMember("users:1:followers", string.Format("user{0}",k)));
         }
     }
 }
