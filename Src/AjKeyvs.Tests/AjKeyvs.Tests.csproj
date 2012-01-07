@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\BigArrayTests.cs" />
+    <Compile Include="Collections\BigStringSetTests.cs" />
     <Compile Include="Collections\BitBitSetTests.cs" />
     <Compile Include="Collections\HierarchicalDictionaryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
