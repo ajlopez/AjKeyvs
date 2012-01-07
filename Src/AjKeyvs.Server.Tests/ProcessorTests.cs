@@ -123,5 +123,36 @@ namespace AjKeyvs.Server.Tests
             Assert.IsTrue(result.HasValue);
             Assert.AreEqual(true, result.Value);
         }
+
+        [TestMethod]
+        public void SetIsMemberOnEmptySet()
+        {
+            for (int k = 1; k <= 1000; k++)
+            {
+                string command = string.Format("sismember users:1:followers {0}", 1);
+                Processor processor = new Processor(this.repository, new StringReader(command));
+                CommandResult result = processor.ProcessCommand();
+
+                Assert.IsNotNull(result);
+                Assert.IsTrue(result.HasValue);
+                Assert.AreEqual(false, result.Value);
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaisesIfUnknownVerb()
+        {
+            Processor processor = new Processor(this.repository, "foo");
+            CommandResult result = processor.ProcessCommand();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void RaisesIfInvalidArity()
+        {
+            Processor processor = new Processor(this.repository, "set users:1:name");
+            CommandResult result = processor.ProcessCommand();
+        }
     }
 }
