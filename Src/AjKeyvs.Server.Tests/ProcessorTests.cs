@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using AjKeyvs.Collections;
 
 namespace AjKeyvs.Server.Tests
 {
@@ -108,6 +109,27 @@ namespace AjKeyvs.Server.Tests
                 Assert.AreEqual((ulong) k, processor.ProcessCommand().Value);
                 Assert.AreEqual((ulong)k, processor.ProcessCommand().Value);
             }
+        }
+
+        [TestMethod]
+        public void SetAddMember()
+        {
+            string command = string.Format("sadd users:1:followers {0}", 1);
+            Processor processor = new Processor(this.repository, command);
+            CommandResult result = processor.ProcessCommand();
+
+            Assert.IsNotNull(result);
+
+            object value = this.repository.GetValue("users:1:followers");
+
+            Assert.IsNotNull(value);
+            Assert.IsInstanceOfType(value, typeof(BigBitSet));
+
+            BigBitSet set = (BigBitSet)value;
+
+            Assert.IsTrue(set[1ul]);
+            Assert.IsFalse(set[0ul]);
+            Assert.IsFalse(set[2ul]);
         }
     }
 }
