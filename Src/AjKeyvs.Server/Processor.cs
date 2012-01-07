@@ -25,6 +25,7 @@ namespace AjKeyvs.Server
             commands["get"] = new GetValueCommand();
 
             commands["sadd"] = new SetAddMemberCommand();
+            commands["srem"] = new SetRemoveMemberCommand();
             commands["sismember"] = new SetIsMemberCommand();
         }
 

@@ -125,6 +125,20 @@ namespace AjKeyvs.Server.Tests
         }
 
         [TestMethod]
+        public void SetAddRemoveAndIsMember()
+        {
+            string command = string.Format("sadd users:1:followers {0}\r\nsrem users:1:followers {0}\r\nsismember users:1:followers {0}", 1);
+            Processor processor = new Processor(this.repository, new StringReader(command));
+            processor.ProcessCommand();
+            processor.ProcessCommand();
+            CommandResult result = processor.ProcessCommand();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.HasValue);
+            Assert.AreEqual(false, result.Value);
+        }
+
+        [TestMethod]
         public void SetIsMemberOnEmptySet()
         {
             for (int k = 1; k <= 1000; k++)
@@ -143,7 +157,7 @@ namespace AjKeyvs.Server.Tests
         [ExpectedException(typeof(InvalidDataException))]
         public void RaisesIfUnknownVerb()
         {
-            Processor processor = new Processor(this.repository, "foo");
+            Processor processor = new Processor(this.repository, "foo key value");
             CommandResult result = processor.ProcessCommand();
         }
 

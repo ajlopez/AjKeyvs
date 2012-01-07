@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CommandInfo.cs" />
     <Compile Include="CommandResult.cs" />
+    <Compile Include="Commands\SetRemoveMemberCommand.cs" />
     <Compile Include="Commands\SetIsMemberCommand.cs" />
     <Compile Include="Commands\SetAddMemberCommand.cs" />
     <Compile Include="Commands\GetValueCommand.cs" />
