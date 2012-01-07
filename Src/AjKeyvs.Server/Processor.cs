@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using AjKeyvs.Server.Parser;
+using AjKeyvs.Server.Commands;
 
 namespace AjKeyvs.Server
 {
@@ -39,12 +40,7 @@ namespace AjKeyvs.Server
 
             if (command.Verb == "set")
             {
-                CheckArity(command, 1);
-                string key = command.Key;
-                object value = command.Parameters[0];
-
-                this.repository.SetValue(key, value);
-                return ok;
+                return ((new SetValueCommand()).Process(command, this.repository));
             }
 
             if (command.Verb == "get")

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CommandInfo.cs" />
     <Compile Include="CommandResult.cs" />
+    <Compile Include="Commands\SetValueCommand.cs" />
     <Compile Include="Parser\CommandReader.cs" />
     <Compile Include="Parser\Token.cs" />
     <Compile Include="Parser\Tokenizer.cs" />

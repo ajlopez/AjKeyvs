@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.IO;
 
     public class CommandInfo
     {
@@ -25,5 +26,14 @@
         public string Key { get { return this.key; } }
 
         public IList<object> Parameters { get { return this.parameters; } }
+
+        public void CheckArity(int arity)
+        {
+            if (arity == 0 && this.parameters != null && this.parameters.Count != 0)
+                throw new InvalidDataException("0 parameters expected");
+
+            if (arity != 0 && (this.parameters == null || this.parameters.Count != arity))
+                throw new InvalidDataException(string.Format("{0} parameters expected", arity));
+        }
     }
 }
