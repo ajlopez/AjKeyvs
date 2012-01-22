@@ -5,6 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Globalization;
 
     public class Tokenizer
     {
@@ -95,7 +96,7 @@
         {
             int ich = this.NextChar();
 
-            while (ich != -1 && char.IsWhiteSpace((char)ich) && ((char)ich) != '\n')
+            while (ich != -1 && (char.IsWhiteSpace((char)ich) || char.GetUnicodeCategory((char)ich) == UnicodeCategory.Control || char.GetUnicodeCategory((char)ich) == UnicodeCategory.OtherSymbol) && ((char)ich) != '\n')
                 ich = this.NextChar();
 
             if (ich != -1)

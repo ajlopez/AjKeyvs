@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjKeyvs.Server", "AjKeyvs.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjKeyvs.Server.Tests", "AjKeyvs.Server.Tests\AjKeyvs.Server.Tests.csproj", "{CE9C576F-9187-4F86-8EC1-E5631305CD6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjKeyvs.Client", "AjKeyvs.Client\AjKeyvs.Client.csproj", "{A3690C1F-32C1-4E73-A573-1027BD764EC0}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = AjKeyvs.vsmdi
@@ -40,6 +42,10 @@ Global
 		{CE9C576F-9187-4F86-8EC1-E5631305CD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE9C576F-9187-4F86-8EC1-E5631305CD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE9C576F-9187-4F86-8EC1-E5631305CD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3690C1F-32C1-4E73-A573-1027BD764EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3690C1F-32C1-4E73-A573-1027BD764EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3690C1F-32C1-4E73-A573-1027BD764EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3690C1F-32C1-4E73-A573-1027BD764EC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AjKeyvs.Server.Parser;
 using System.IO;
+using System.Globalization;
 
 namespace AjKeyvs.Server.Tests.Parser
 {
@@ -135,6 +136,23 @@ namespace AjKeyvs.Server.Tests.Parser
         public void ParseSimpleString()
         {
             Tokenizer tokenizer = new Tokenizer("\"Adam\"");
+
+            Token token = tokenizer.NextToken();
+
+            Assert.IsNotNull(token);
+            Assert.AreEqual(TokenType.String, token.Type);
+            Assert.AreEqual("Adam", token.Value);
+
+            Assert.IsNull(tokenizer.NextToken());
+        }
+
+        [TestMethod]
+        public void ParseSimpleStringWithUnicodeOtherSymbol()
+        {
+            char othersymbol = (char) 0xfffd;
+            Assert.IsTrue(char.GetUnicodeCategory(othersymbol) == UnicodeCategory.OtherSymbol);
+
+            Tokenizer tokenizer = new Tokenizer(othersymbol +"\"Adam\"");
 
             Token token = tokenizer.NextToken();
 

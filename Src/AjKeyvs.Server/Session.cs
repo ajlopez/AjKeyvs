@@ -47,6 +47,8 @@
                 else
                     this.writer.WriteLine("OK");
 
+                this.writer.Flush();
+
                 if (this.isconsole)
                     this.writer.Write("ajkeyvs> ");
             }
