@@ -24,11 +24,17 @@
             {
                 Console.Write("ajkeyvs-client> ");
                 string command = Console.ReadLine();
+
+                if (command == "exit")
+                    break;
+
                 writer.WriteLine(command);
                 writer.Flush();
                 string result = reader.ReadLine();
                 Console.WriteLine(result);
             }
+
+            client.Close();
         }
     }
 }

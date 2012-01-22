@@ -41,6 +41,9 @@
             if (token.Type != TokenType.Name)
                 throw new InvalidDataException("Invalid Verb");
 
+            if (token.Value == "exit")
+                return null;
+
             string verb = token.Value;
 
             token = this.tokenizer.NextToken();

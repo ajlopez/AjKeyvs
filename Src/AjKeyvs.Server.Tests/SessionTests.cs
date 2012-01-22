@@ -56,6 +56,13 @@ namespace AjKeyvs.Server.Tests
             Assert.AreEqual("OK\r\n", result);
         }
 
+        [TestMethod]
+        public void Exit()
+        {
+            var result = this.RunSession("exit\r\n");
+            Assert.AreEqual(string.Empty, result);
+        }
+
         private string RunSession(string text)
         {
             StringReader reader = new StringReader(text);
