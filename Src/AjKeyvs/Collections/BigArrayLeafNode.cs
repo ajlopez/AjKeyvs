@@ -20,7 +20,7 @@
 
         public IBigArrayNode<T> SetValue(ulong index, T value)
         {
-            if (this.from <= index && index <= this.from + (ulong) (this.size - 1))
+            if (this.from <= index && index <= this.from + (ulong)(this.size - 1))
             {
                 this.values[index - this.from] = value;
                 return this;

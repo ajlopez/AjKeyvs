@@ -8,7 +8,7 @@
 
     public class Repository
     {
-        HierarchicalDictionary<object> values = new HierarchicalDictionary<object>();
+        private HierarchicalDictionary<object> values = new HierarchicalDictionary<object>();
 
         public object GetValue(string key)
         {

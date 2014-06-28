@@ -17,16 +17,16 @@
             get
             {
                 if (IsSimpleKey(key))
-                    return GetSimpleKeyValue(key);
-                return GetCompositeKeyValue(key);
+                    return this.GetSimpleKeyValue(key);
+                return this.GetCompositeKeyValue(key);
             }
 
             set
             {
                 if (IsSimpleKey(key))
-                    SetSimpleKeyValue(key, value);
+                    this.SetSimpleKeyValue(key, value);
                 else
-                    SetCompositeKeyValue(key, value);
+                    this.SetCompositeKeyValue(key, value);
             }
         }
 
@@ -41,7 +41,7 @@
 
             if (ulong.TryParse(key, out lkey))
             {
-                SetSimpleKeyValue(lkey, value);
+                this.SetSimpleKeyValue(lkey, value);
                 return;
             }
 
@@ -69,7 +69,7 @@
 
             if (ulong.TryParse(subkey, out lkey))
             {
-                SetCompositeKeyValue(lkey, restkey, value);
+                this.SetCompositeKeyValue(lkey, restkey, value);
                 return;
             }
 
@@ -98,7 +98,7 @@
             ulong lkey;
 
             if (ulong.TryParse(key, out lkey))
-                return GetSimpleKeyValue(lkey);
+                return this.GetSimpleKeyValue(lkey);
 
             if (this.values == null || !this.values.ContainsKey(key))
                 return default(T);
@@ -123,7 +123,7 @@
             ulong lkey;
 
             if (ulong.TryParse(subkey, out lkey))
-                return GetCompositeKeyValue(lkey, restkey);
+                return this.GetCompositeKeyValue(lkey, restkey);
 
             if (this.subdictionaries == null)
                 return default(T);

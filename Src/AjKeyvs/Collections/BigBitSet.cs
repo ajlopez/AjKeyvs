@@ -34,11 +34,11 @@
                 }
 
                 ulong position = index >> 8;
-                ushort offset = (ushort) (index & 0x07);
+                ushort offset = (ushort)(index & 0x07);
                 byte result = this.bytes[position];
-                byte bit = (byte) (1 << offset);
+                byte bit = (byte)(1 << offset);
                 if (value == false)
-                    result &= (byte) (0xff - bit);
+                    result &= (byte)(0xff - bit);
                 else
                     result |= bit;
 

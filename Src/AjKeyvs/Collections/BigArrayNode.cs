@@ -41,7 +41,7 @@
             else
                 this.subnodes = new BigArrayNode<T>[size];
             
-            if (subnodes != null)
+            if (this.subnodes != null)
                 this.subnodes[this.GetSlotNumber(index)] = subnode;
         }
 
@@ -64,7 +64,7 @@
                 return this;
             }
 
-            BigArrayNode<T> parent = new BigArrayNode<T>(this.from, this.size, (ushort) (this.level + 1), this);
+            BigArrayNode<T> parent = new BigArrayNode<T>(this.from, this.size, (ushort)(this.level + 1), this);
 
             return parent.SetValue(index, value);
         }

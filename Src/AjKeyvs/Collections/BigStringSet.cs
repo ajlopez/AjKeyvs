@@ -71,7 +71,7 @@
             if (hash < 0)
                 hash = -hash;
 
-            return (ulong) hash;
+            return (ulong)hash;
         }
     }
 }
