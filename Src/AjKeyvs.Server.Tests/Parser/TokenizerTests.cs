@@ -1,14 +1,14 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AjKeyvs.Server.Parser;
-using System.IO;
-using System.Globalization;
-
-namespace AjKeyvs.Server.Tests.Parser
+﻿namespace AjKeyvs.Server.Tests.Parser
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Server.Parser;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class TokenizerTests
     {
@@ -149,10 +149,10 @@ namespace AjKeyvs.Server.Tests.Parser
         [TestMethod]
         public void ParseSimpleStringWithUnicodeOtherSymbol()
         {
-            char othersymbol = (char) 0xfffd;
+            char othersymbol = (char)0xfffd;
             Assert.IsTrue(char.GetUnicodeCategory(othersymbol) == UnicodeCategory.OtherSymbol);
 
-            Tokenizer tokenizer = new Tokenizer(othersymbol +"\"Adam\"");
+            Tokenizer tokenizer = new Tokenizer(othersymbol + "\"Adam\"");
 
             Token token = tokenizer.NextToken();
 

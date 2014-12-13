@@ -1,13 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AjKeyvs.Server.Parser;
-using System.IO;
-
-namespace AjKeyvs.Server.Tests.Parser
+﻿namespace AjKeyvs.Server.Tests.Parser
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Server.Parser;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class CommandReaderTests
     {
@@ -42,7 +42,7 @@ namespace AjKeyvs.Server.Tests.Parser
         [TestMethod]
         public void ParseNullCommand()
         {
-            CommandReader reader = new CommandReader("");
+            CommandReader reader = new CommandReader(string.Empty);
 
             CommandInfo command = reader.NextCommand();
 

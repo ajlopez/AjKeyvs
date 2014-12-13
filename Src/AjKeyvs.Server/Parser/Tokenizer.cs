@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Text;
-    using System.Globalization;
 
     public class Tokenizer
     {
@@ -39,20 +39,20 @@
                 return new Token(TokenType.EndOfLine, "\n");
 
             if (ch == '"')
-                return NextString();
+                return this.NextString();
 
             if (char.IsDigit(ch))
-                return NextInteger(ch);
+                return this.NextInteger(ch);
 
             if (char.IsLetter(ch))
-                return NextName(ch);
+                return this.NextName(ch);
 
             throw new InvalidDataException(string.Format("Unexpected character '{0}'", ch));
         }
 
         private Token NextName(char ch)
         {
-            string value = new String(ch, 1);
+            string value = new string(ch, 1);
             int ich;
 
             for (ich = this.NextChar(); ich != -1 && (char.IsLetterOrDigit((char)ich) || namechars.Contains((char)ich)); ich = this.NextChar())
@@ -69,7 +69,7 @@
             string value = string.Empty;
             int ich;
 
-            for (ich = this.NextChar(); ich != -1 && ((char) ich) != '"'; ich = this.NextChar())
+            for (ich = this.NextChar(); ich != -1 && (char)ich != '"'; ich = this.NextChar())
                 value += (char)ich;
 
             if (ich == -1)
@@ -80,7 +80,7 @@
 
         private Token NextInteger(char ch)
         {
-            string value = new String(ch, 1);
+            string value = new string(ch, 1);
             int ich;
 
             for (ich = this.NextChar(); ich != -1 && char.IsDigit((char)ich); ich = this.NextChar())
@@ -108,7 +108,7 @@
             if (this.chars.Count > 0)
                 return this.chars.Pop();
 
-            return reader.Read();
+            return this.reader.Read();
         }
 
         private void PushChar(int ich)

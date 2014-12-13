@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using AjKeyvs.Server.Parser;
-using AjKeyvs.Server.Commands;
-
-namespace AjKeyvs.Server
+﻿namespace AjKeyvs.Server
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Server.Commands;
+    using AjKeyvs.Server.Parser;
+
     public class Processor
     {
         private static CommandResult ok = new CommandResult();

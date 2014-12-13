@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    class GetValueCommand : AjKeyvs.Server.Commands.ICommand
+    public class GetValueCommand : AjKeyvs.Server.Commands.ICommand
     {
         public CommandResult Process(CommandInfo info, Repository repository)
         {

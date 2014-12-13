@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using AjKeyvs.Server.Parser;
-using System.Net.Sockets;
-using System.Threading;
-using System.Net;
-
-namespace AjKeyvs.Server
+﻿namespace AjKeyvs.Server
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading;
+    using AjKeyvs.Server.Parser;
+
+    public class Program
     {
         private static Repository repository;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             repository = new Repository();
 
             TextReader reader = System.Console.In;
             TextWriter writer = System.Console.Out;
-
 
             if (args != null && args.Length > 1)
             {
@@ -36,9 +35,9 @@ namespace AjKeyvs.Server
             session.Process();
         }
 
-        static void Listen(object parameter)
+        private static void Listen(object parameter)
         {
-            TcpListener listener = (TcpListener) parameter;
+            TcpListener listener = (TcpListener)parameter;
             listener.Start();
 
             while (true)

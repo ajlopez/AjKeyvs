@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    class SetRemoveMemberCommand : AjKeyvs.Server.Commands.ICommand
+    public class SetRemoveMemberCommand : AjKeyvs.Server.Commands.ICommand
     {
         private static CommandResult ok = new CommandResult();
 

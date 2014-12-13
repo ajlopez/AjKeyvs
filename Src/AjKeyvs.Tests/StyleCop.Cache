@@ -1,0 +1,60 @@
+<stylecopresultscache>
+  <version>10</version>
+  <project key="1832300622">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="BigArrayTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:06:52</timestamp>
+    <milliseconds>196</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BigStringSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:04:55</timestamp>
+    <milliseconds>231</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BitBitSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:06:49</timestamp>
+    <milliseconds>258</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HierarchicalDictionaryTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:06:07</timestamp>
+    <milliseconds>804</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/25/2011 17:44:53</timestamp>
+    <milliseconds>397</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RepositoryTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:56:40</timestamp>
+      <milliseconds>299</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:07:38</timestamp>
+    <milliseconds>835</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

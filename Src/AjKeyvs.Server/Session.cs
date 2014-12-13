@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
-    using System.IO;
     using AjKeyvs.Server.Parser;
 
     public class Session
@@ -33,7 +33,7 @@
             {
                 if (result.HasValue)
                 {
-                    if (result.Value is String)
+                    if (result.Value is string)
                     {
                         this.writer.Write('"');
                         this.writer.Write(result.Value);

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AjKeyvs.Collections;
-
-namespace AjKeyvs.Tests.Collections
+﻿namespace AjKeyvs.Tests.Collections
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Collections;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class HierarchicalDictionaryTests
     {
@@ -65,8 +65,8 @@ namespace AjKeyvs.Tests.Collections
 
             for (int k = 1; k <= 1000; k++)
             {
-                Assert.AreEqual(string.Format("user{0}", k), this.dictionary[string.Format("users:{0}:name", k)]);;
-                Assert.AreEqual(k, this.dictionary[string.Format("users:{0}:id", k)]); ;
+                Assert.AreEqual(string.Format("user{0}", k), this.dictionary[string.Format("users:{0}:name", k)]);
+                Assert.AreEqual(k, this.dictionary[string.Format("users:{0}:id", k)]);
             }
         }
     }

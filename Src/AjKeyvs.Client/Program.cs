@@ -2,17 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Net;
     using System.Net.Sockets;
-    using System.IO;
+    using System.Text;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            string hostname = args[0];;
+            string hostname = args[0];
             int port = Int32.Parse(args[1]);
             TcpClient client = new TcpClient(hostname, port);
 

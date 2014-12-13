@@ -1,0 +1,150 @@
+<stylecopresultscache>
+  <version>10</version>
+  <project key="-288170172">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="CommandInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:59:03</timestamp>
+    <milliseconds>102</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommandResult.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>01/01/2012 19:32:58</timestamp>
+    <milliseconds>382</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="GetValueCommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:57:46</timestamp>
+    <milliseconds>380</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:57:40</timestamp>
+    <milliseconds>625</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SetAddMemberCommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:57:51</timestamp>
+    <milliseconds>355</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SetIsMemberCommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:58:08</timestamp>
+    <milliseconds>143</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SetRemoveMemberCommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:58:12</timestamp>
+    <milliseconds>793</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SetValueCommand.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:59:03</timestamp>
+    <milliseconds>102</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommandReader.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:59:03</timestamp>
+    <milliseconds>86</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Token.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/31/2011 17:32:17</timestamp>
+    <milliseconds>464</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Tokenizer.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:01:09</timestamp>
+    <milliseconds>957</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TokenType.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:59:53</timestamp>
+    <milliseconds>214</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Processor.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 04:59:45</timestamp>
+    <milliseconds>757</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Program.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:00:55</timestamp>
+    <milliseconds>65</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/31/2011 17:15:59</timestamp>
+    <milliseconds>165</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Session.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>12/13/2014 04:57:07</timestamp>
+      <milliseconds>953</milliseconds>
+    </settings>
+    <timestamp>12/13/2014 05:00:22</timestamp>
+    <milliseconds>197</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

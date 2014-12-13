@@ -1,5 +1,8 @@
 <stylecopresultscache>
   <version>10</version>
+  <project key="790753664">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="BigArray.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>06/28/2014 20:05:56</timestamp>
@@ -9,20 +12,50 @@
     <milliseconds>659</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="BigArrayLeafNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/28/2014 20:05:56</timestamp>
+      <milliseconds>890</milliseconds>
+    </settings>
+    <timestamp>06/28/2014 20:07:29</timestamp>
+    <milliseconds>627</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BigArrayNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/28/2014 20:05:56</timestamp>
+      <milliseconds>890</milliseconds>
+    </settings>
+    <timestamp>06/28/2014 20:07:29</timestamp>
+    <milliseconds>614</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BigBitSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/28/2014 20:05:56</timestamp>
+      <milliseconds>890</milliseconds>
+    </settings>
+    <timestamp>06/28/2014 20:07:46</timestamp>
+    <milliseconds>239</milliseconds>
+    <violations />
+  </sourcecode>
   <sourcecode name="BigStringSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>06/28/2014 20:05:56</timestamp>
       <milliseconds>890</milliseconds>
     </settings>
-    <timestamp>01/07/2012 18:10:58</timestamp>
-    <milliseconds>479</milliseconds>
-    <violations>
-      <violation namespace="Microsoft.StyleCop.CSharp.SpacingRules" rule="ClosingParenthesisMustBeSpacedCorrectly" ruleCheckId="SA1009">
-        <context>Invalid spacing around the closing parenthesis.</context>
-        <line>74</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <timestamp>06/28/2014 20:07:59</timestamp>
+    <milliseconds>503</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HierarchicalDictionary.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/28/2014 20:05:56</timestamp>
+      <milliseconds>890</milliseconds>
+    </settings>
+    <timestamp>06/28/2014 20:07:29</timestamp>
+    <milliseconds>621</milliseconds>
+    <violations />
   </sourcecode>
   <sourcecode name="IBigArrayNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
@@ -42,24 +75,6 @@
     <milliseconds>934</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="BigArrayNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>06/28/2014 20:05:56</timestamp>
-      <milliseconds>890</milliseconds>
-    </settings>
-    <timestamp>06/28/2014 20:07:29</timestamp>
-    <milliseconds>614</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="BigArrayLeafNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>06/28/2014 20:05:56</timestamp>
-      <milliseconds>890</milliseconds>
-    </settings>
-    <timestamp>06/28/2014 20:07:29</timestamp>
-    <milliseconds>627</milliseconds>
-    <violations />
-  </sourcecode>
   <sourcecode name="Repository.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>06/28/2014 20:05:56</timestamp>
@@ -69,25 +84,4 @@
     <milliseconds>603</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="HierarchicalDictionary.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>06/28/2014 20:05:56</timestamp>
-      <milliseconds>890</milliseconds>
-    </settings>
-    <timestamp>06/28/2014 20:07:29</timestamp>
-    <milliseconds>621</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="BigBitSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>06/28/2014 20:05:56</timestamp>
-      <milliseconds>890</milliseconds>
-    </settings>
-    <timestamp>06/28/2014 20:07:46</timestamp>
-    <milliseconds>239</milliseconds>
-    <violations />
-  </sourcecode>
-  <project key="790753664">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
 </stylecopresultscache>

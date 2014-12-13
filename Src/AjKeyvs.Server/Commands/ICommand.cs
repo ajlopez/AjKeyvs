@@ -2,7 +2,7 @@
 {
     using System;
 
-    interface ICommand
+    public interface ICommand
     {
         CommandResult Process(CommandInfo info, Repository repository);
     }

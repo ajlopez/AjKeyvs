@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    class SetValueCommand : AjKeyvs.Server.Commands.ICommand
+    public class SetValueCommand : AjKeyvs.Server.Commands.ICommand
     {
         private static CommandResult ok = new CommandResult();
 

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using AjKeyvs.Collections;
-
-namespace AjKeyvs.Tests.Collections
+﻿namespace AjKeyvs.Tests.Collections
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Collections;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class BigArrayTests
     {
@@ -27,10 +26,10 @@ namespace AjKeyvs.Tests.Collections
             BigArray<int> array = new BigArray<int>(10);
 
             for (int k = 0; k < 10; k++)
-                array[(ulong) k] = k;
+                array[(ulong)k] = k;
 
             for (int k = 0; k < 10; k++)
-                Assert.AreEqual(k, array[(ulong) k]);
+                Assert.AreEqual(k, array[(ulong)k]);
         }
 
         [TestMethod]
@@ -72,7 +71,7 @@ namespace AjKeyvs.Tests.Collections
             BigArray<int> array = new BigArray<int>(10);
 
             for (int k = 0; k < 20; k++)
-                array[(ulong) k] = k;
+                array[(ulong)k] = k;
 
             for (int k = 100; k < 120; k++)
                 Assert.AreEqual(0, array[(ulong)k]);
@@ -84,10 +83,10 @@ namespace AjKeyvs.Tests.Collections
             BigArray<int> array = new BigArray<int>(16);
 
             for (int k = 0; k < 16; k++)
-                array[(ulong)(ulong.MaxValue - (uint) k)] = k;
+                array[(ulong)(ulong.MaxValue - (uint)k)] = k;
 
             for (int k = 0; k < 16; k++)
-                Assert.AreEqual(k, array[(ulong)(ulong.MaxValue - (uint) k)]);
+                Assert.AreEqual(k, array[(ulong)(ulong.MaxValue - (uint)k)]);
         }
 
         [TestMethod]
@@ -104,7 +103,7 @@ namespace AjKeyvs.Tests.Collections
                 Assert.AreEqual(k, array[(ulong)(ulong.MaxValue - (uint)k)]);
 
             for (int k = 0; k < 16; k++)
-                Assert.AreEqual(k, array[(ulong) k]);
+                Assert.AreEqual(k, array[(ulong)k]);
         }
 
         [TestMethod]

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using AjKeyvs.Collections;
-
-namespace AjKeyvs.Server.Tests
+﻿namespace AjKeyvs.Server.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using AjKeyvs.Collections;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class ProcessorTests
     {
@@ -24,7 +24,7 @@ namespace AjKeyvs.Server.Tests
         {
             Processor processor = new Processor(this.repository, "set counter 1");
             Assert.IsFalse(processor.ProcessCommand().HasValue);
-            Assert.AreEqual(1ul, repository.GetValue("counter"));
+            Assert.AreEqual(1ul, this.repository.GetValue("counter"));
         }
 
         [TestMethod]
@@ -33,8 +33,8 @@ namespace AjKeyvs.Server.Tests
             Processor processor = new Processor(this.repository, "set users:1:age 800\nset users:1:height 180");
             Assert.IsFalse(processor.ProcessCommand().HasValue);
             Assert.IsFalse(processor.ProcessCommand().HasValue);
-            Assert.AreEqual(800ul, repository.GetValue("users:1:age"));
-            Assert.AreEqual(180ul, repository.GetValue("users:1:height"));
+            Assert.AreEqual(800ul, this.repository.GetValue("users:1:age"));
+            Assert.AreEqual(180ul, this.repository.GetValue("users:1:height"));
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace AjKeyvs.Server.Tests
             for (int k = 1; k <= 1000; k++)
             {
                 Processor processor = new Processor(this.repository, string.Format("get users:{0}:age\nget users:{0}:id", k));
-                Assert.AreEqual((ulong) k, processor.ProcessCommand().Value);
+                Assert.AreEqual((ulong)k, processor.ProcessCommand().Value);
                 Assert.AreEqual((ulong)k, processor.ProcessCommand().Value);
             }
         }
